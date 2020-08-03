@@ -27,6 +27,7 @@ function PerfilComUsuario() {
 
     return (
         <div className="tela">
+            <h2>Os usuários devem ter seu perfil próprio?</h2>
             <div className="opcoes">
                 <Link to='/painelAdm'  onClick={() => escolherOpcao("Sim", valores.perfilUsuarioSim)}>
                     <Opcao imagem={perfilUsuarioSim} />

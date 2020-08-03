@@ -27,6 +27,7 @@ function PainelAdm() {
 
     return (
         <div className="tela">
+            <h2>Seu aplicativo necessita de um painel administrativo?</h2>
             <div className="opcoes">
                 <Link to='/idiomas'  onClick={() => escolherOpcao("Sim", valores.painelAdmSim)}>
                     <Opcao imagem={painelAdmSim} />

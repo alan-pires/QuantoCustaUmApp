@@ -30,20 +30,21 @@ function Design() {
 
     return (
         <div className="tela">
+            <h2>Qual design você deseja que o seu aplicativo tenha?</h2>
             <div className="opcoes">
-                <Link to='/retornoFinanceiro'  onClick={() => escolherOpcao("Interface Simples", valores.interfaceSimples)} >
+                <Link to='/retornoFinanceiro' className="col-12 col-lg-3"  onClick={() => escolherOpcao("Interface Simples", valores.interfaceSimples)} >
                     <Opcao imagem={InterfaceSimples} />
                       <p>Interface Simples</p>
                 </Link>
-                <Link to='/retornoFinanceiro'  onClick={() => escolherOpcao("Interface Personalizada", valores.interfacePersonalizada)}>
+                <Link to='/retornoFinanceiro' className="col-12 col-lg-3"  onClick={() => escolherOpcao("Interface Personalizada", valores.interfacePersonalizada)}>
                     <Opcao imagem={InterfacePersonalizada} />
                     <p>Interface Personalizada</p>
                 </Link>
-                <Link to='/retornoFinanceiro'  onClick={() => escolherOpcao("Interface Web", valores.interfaceWeb)}>
+                <Link to='/retornoFinanceiro' className="col-12 col-lg-3"  onClick={() => escolherOpcao("Interface Web", valores.interfaceWeb)}>
                     <Opcao imagem={InterfaceWeb} />
                     <p>Interface Web</p>
                 </Link>
-                <Link to='/retornoFinanceiro'  onClick={() => escolherOpcao("Sem design", valores.semDesign)}>
+                <Link to='/retornoFinanceiro' className="col-12 col-lg-3" onClick={() => escolherOpcao("Sem design", valores.semDesign)}>
                     <Opcao imagem={semDesign} />
                     <p>Sem design</p>
                 </Link>

@@ -26,6 +26,7 @@ function Idiomas() {
     }
     return (
         <div className="tela">
+            <h2>Quantas línguas você deseja que seu aplicativo tenha?</h2>
             <div className="opcoes">
                 <Link to='/estagioProjeto'  onClick={() => escolherOpcao("Uma língua", valores.umaLingua)}>
                     <Opcao imagem={umaLingua} />

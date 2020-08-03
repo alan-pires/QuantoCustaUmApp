@@ -28,6 +28,7 @@ function SistemaLogin() {
 
     return (
         <div className="tela">
+            <h2>O seu apicativo precisa de um sistema de login?</h2>
             <div className="opcoes">
                 <Link to='/integracaoWeb'  onClick={() => escolherOpcao("Login Com Redes Sociais e Email", valores.comRedesSociaisEmail)} >
                     <Opcao imagem={loginComRedesSociaisEmail} />

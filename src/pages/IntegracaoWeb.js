@@ -27,6 +27,7 @@ function IntegracaoWeb() {
 
     return (
         <div className="tela">
+            <h2>Seu aplicativo deve ser integrado à um website?</h2>
             <div className="opcoes">
                 <Link to='/perfilComUsuario'  onClick={() => escolherOpcao("Sim", valores.intWebSim)}>
                     <Opcao imagem={intWebSim} />

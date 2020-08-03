@@ -27,6 +27,7 @@ function RetornoFinanceiro() {
     }
     return (
         <div className="tela">
+            <h2>Qual retorno financeiro você deseja ter?</h2>
             <div className="opcoes">
                 <Link to='/sistemaLogin'  onClick={() => escolherOpcao("App Gratis Com Publicidade", valores.appGratisComPublic)} >
                     <Opcao imagem={appGratisComPublicidade} />

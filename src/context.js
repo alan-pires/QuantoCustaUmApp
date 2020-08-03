@@ -13,8 +13,7 @@ export const ChoicesProvider = props => {
         perfilUsuario: "",
         painelAdm: "",
         idiomas: "",
-        estagioProjeto: "",
-        valor: 0
+        estagioProjeto: ""
     })
 
     const [valores, setValores] = useState({

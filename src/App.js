@@ -30,7 +30,6 @@ function App() {
         <Route exact path="/idiomas" component={Idiomas} />
         <Route exact path="/estagioProjeto" component={EstagioProjeto} />
         <Route exact path="/resultado" component={Resultado} />
-
       </Switch>
     </>
   );

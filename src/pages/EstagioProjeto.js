@@ -28,8 +28,9 @@ function EstagioProjeto() {
 
     return (
         <div className="tela">
-            <div className="opcoes">
-                <Link to='/resultado'  onClick={() => escolherOpcao("É apenas um projeto", valores.apenasProjeto)}>
+            <h2>Em que estágio se encontra o seu projeto?</h2>
+            <div className="opcoes" >
+                <Link to='/resultado' onClick={() => escolherOpcao("É apenas um projeto", valores.apenasProjeto)}>
                     <Opcao imagem={apenasProjeto} />
                     <p>É apenas um projeto</p>
                 </Link>

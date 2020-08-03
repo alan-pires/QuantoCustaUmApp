@@ -27,6 +27,7 @@ function TipoDeApp() {
 
     return (
         <div className="tela">
+            <h2>Qual tipo de aplicativo você precisa?</h2>
             <div className="opcoes">
                 <Link to='/design'  onClick={() => escolherOpcao("Aplicativo Android", valores.aplicativoAndroid)} >
                     <Opcao imagem={AppAndroid} />
