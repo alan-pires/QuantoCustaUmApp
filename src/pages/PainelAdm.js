@@ -9,27 +9,34 @@ import {ChoicesContext} from '../context'
 
 function PainelAdm() {
 
-    const [choices, setChoices] = useContext(ChoicesContext)
+    const { choicesOb, valoresOb, valorTotalOb } = useContext(ChoicesContext);
 
-    function escolherOpcao(selec){       
+    const [choices, setChoices] = choicesOb
+    const [valores, setValores] = valoresOb
+    const [valorTotal, setValorTotal] = valorTotalOb
+
+    
+    function escolherOpcao(selec, valor){       
         setChoices({
            ...choices,
-           painelAdm: selec
-            })            
+            painelAdm: selec
+            })  
+        setValorTotal(valorTotal+valor)     
+              
     }
 
     return (
         <div className="tela">
             <div className="opcoes">
-                <Link to='/idiomas'  onClick={() => escolherOpcao("Sim")}>
+                <Link to='/idiomas'  onClick={() => escolherOpcao("Sim", valores.painelAdmSim)}>
                     <Opcao imagem={painelAdmSim} />
                     <p>Sim</p>
                 </Link>
-                <Link to='/idiomas'  onClick={() => escolherOpcao("Não")}>
+                <Link to='/idiomas'  onClick={() => escolherOpcao("Não", valores.painelAdmNao)}>
                     <Opcao imagem={painelAdmNao} />
                     <p>Não</p>
                 </Link>
-                <Link to='/idiomas'  onClick={() => escolherOpcao("Ainda não sei")}>
+                <Link to='/idiomas'  onClick={() => escolherOpcao("Ainda não sei", valores.outrosNaoSei)}>
                     <Opcao imagem={painelAdmNaoSei} />
                     <p>Ainda não sei</p>
                 </Link>

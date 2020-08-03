@@ -10,31 +10,38 @@ import {ChoicesContext} from '../context'
 
 function EstagioProjeto() {
 
-    const [choices, setChoices] = useContext(ChoicesContext)
+    const { choicesOb, valoresOb, valorTotalOb } = useContext(ChoicesContext);
 
-    function escolherOpcao(selec){       
+    const [choices, setChoices] = choicesOb
+    const [valores, setValores] = valoresOb
+    const [valorTotal, setValorTotal] = valorTotalOb
+
+    
+    function escolherOpcao(selec, valor){       
         setChoices({
            ...choices,
-           estagioProjeto: selec
-            })            
+            estagioProjeto: selec
+            })  
+        setValorTotal(valorTotal+valor)     
+              
     }
 
     return (
         <div className="tela">
             <div className="opcoes">
-                <Link to='/resultado'  onClick={() => escolherOpcao("É apenas um projeto")}>
+                <Link to='/resultado'  onClick={() => escolherOpcao("É apenas um projeto", valores.apenasProjeto)}>
                     <Opcao imagem={apenasProjeto} />
                     <p>É apenas um projeto</p>
                 </Link>
-                <Link to='/resultado'  onClick={() => escolherOpcao("Esboço já preparado")}>
+                <Link to='/resultado'  onClick={() => escolherOpcao("Esboço já preparado", valores.esbocoPreparado)}>
                     <Opcao imagem={esbocoPreparado} />
                     <p>Esboço já preparado</p>
                 </Link>
-                <Link to='/resultado'  onClick={() => escolherOpcao("Aplicativo em desenvolvimento")}>
+                <Link to='/resultado'  onClick={() => escolherOpcao("Aplicativo em desenvolvimento", valores.appEmDesenvolvimento)}>
                     <Opcao imagem={emDesenvolvimento} />
                     <p>Aplicativo em desenvolvimento</p>
                 </Link>
-                <Link to='/resultado'  onClick={() => escolherOpcao("App já está pronto")}>
+                <Link to='/resultado'  onClick={() => escolherOpcao("App já está pronto", valores.appPronto)}>
                     <Opcao imagem={jaPronto} />
                     <p>App já está pronto</p>
                 </Link>

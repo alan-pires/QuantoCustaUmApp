@@ -9,27 +9,34 @@ import {ChoicesContext} from '../context'
 
 function IntegracaoWeb() {
 
-    const [choices, setChoices] = useContext(ChoicesContext)
+    const { choicesOb, valoresOb, valorTotalOb } = useContext(ChoicesContext);
 
-    function escolherOpcao(selec){       
+    const [choices, setChoices] = choicesOb
+    const [valores, setValores] = valoresOb
+    const [valorTotal, setValorTotal] = valorTotalOb
+
+    
+    function escolherOpcao(selec, valor){       
         setChoices({
            ...choices,
-           integracaoWeb: selec
-            })            
+            integracaoWeb: selec
+            })  
+        setValorTotal(valorTotal+valor)     
+              
     }
 
     return (
         <div className="tela">
             <div className="opcoes">
-                <Link to='/perfilComUsuario'  onClick={() => escolherOpcao("Sim")}>
+                <Link to='/perfilComUsuario'  onClick={() => escolherOpcao("Sim", valores.intWebSim)}>
                     <Opcao imagem={intWebSim} />
                     <p>Sim</p>
                 </Link>
-                <Link to='/perfilComUsuario'  onClick={() => escolherOpcao("Não")}>
+                <Link to='/perfilComUsuario'  onClick={() => escolherOpcao("Não", valores.intWebNao)}>
                     <Opcao imagem={intWebNao} />
                     <p>Não</p>
                 </Link>
-                <Link to='/perfilComUsuario'  onClick={() => escolherOpcao("Ainda não sei")}>
+                <Link to='/perfilComUsuario'  onClick={() => escolherOpcao("Ainda não sei", valores.outrosNaoSei)}>
                     <Opcao imagem={naoSei} />
                     <p>Ainda não sei</p>
                 </Link>

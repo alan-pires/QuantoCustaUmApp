@@ -5,12 +5,19 @@ import {ChoicesContext} from '../context'
 
 
 function Resultado() {
-    const [choices, setChoices] = useContext(ChoicesContext)
-    console.log(choices)
-   
+    const { choicesOb, valorTotalOb } = useContext(ChoicesContext);
+
+    const [choices, setChoices] = choicesOb
+    const [valorTotal, setValorTotal] = valorTotalOb
+
+
     return (
         <div className="tela">
-           <p>{ choices.nivelQualidade }</p>
+           <p>Muito bem... Já terminamos!</p>
+           <h3>O custo estimado do seu App é de R$ { valorTotal },00</h3>
+           <div className="comecar">
+               <h2>Crie seu projeto!</h2>
+           </div>
         </div>
     )
 }

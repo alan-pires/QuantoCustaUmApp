@@ -9,32 +9,41 @@ import { Link } from 'react-router-dom'
 import {ChoicesContext} from '../context'
 
 function Design() {
+    
+    const { choicesOb, valoresOb, valorTotalOb } = useContext(ChoicesContext);
 
-    const [choices, setChoices] = useContext(ChoicesContext)
+    const [choices, setChoices] = choicesOb
+    const [valores, setValores] = valoresOb
+    const [valorTotal, setValorTotal] = valorTotalOb
 
-    function escolherOpcao(selec){       
+
+    
+    function escolherOpcao(selec, valor){       
         setChoices({
            ...choices,
-           design: selec
-            })            
+            design: selec
+            })  
+        setValorTotal(valorTotal+valor)     
+              
     }
+
 
     return (
         <div className="tela">
             <div className="opcoes">
-                <Link to='/retornoFinanceiro'  onClick={() => escolherOpcao("Interface Simples")} >
+                <Link to='/retornoFinanceiro'  onClick={() => escolherOpcao("Interface Simples", valores.interfaceSimples)} >
                     <Opcao imagem={InterfaceSimples} />
                       <p>Interface Simples</p>
                 </Link>
-                <Link to='/retornoFinanceiro'  onClick={() => escolherOpcao("Interface Personalizada")}>
+                <Link to='/retornoFinanceiro'  onClick={() => escolherOpcao("Interface Personalizada", valores.interfacePersonalizada)}>
                     <Opcao imagem={InterfacePersonalizada} />
                     <p>Interface Personalizada</p>
                 </Link>
-                <Link to='/retornoFinanceiro'  onClick={() => escolherOpcao("Interface Web")}>
+                <Link to='/retornoFinanceiro'  onClick={() => escolherOpcao("Interface Web", valores.interfaceWeb)}>
                     <Opcao imagem={InterfaceWeb} />
                     <p>Interface Web</p>
                 </Link>
-                <Link to='/retornoFinanceiro'  onClick={() => escolherOpcao("Sem design")}>
+                <Link to='/retornoFinanceiro'  onClick={() => escolherOpcao("Sem design", valores.semDesign)}>
                     <Opcao imagem={semDesign} />
                     <p>Sem design</p>
                 </Link>

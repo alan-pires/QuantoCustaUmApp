@@ -10,31 +10,38 @@ import {ChoicesContext} from '../context'
 
 function SistemaLogin() {
 
-    const [choices, setChoices] = useContext(ChoicesContext)
+    const { choicesOb, valoresOb, valorTotalOb } = useContext(ChoicesContext);
 
-    function escolherOpcao(selec){       
+    const [choices, setChoices] = choicesOb
+    const [valores, setValores] = valoresOb
+    const [valorTotal, setValorTotal] = valorTotalOb
+
+    
+    function escolherOpcao(selec, valor){       
         setChoices({
            ...choices,
-           sistemaLogin: selec
-            })            
+            sistemaLogin: selec
+            })  
+        setValorTotal(valorTotal+valor)     
+              
     }
 
     return (
         <div className="tela">
             <div className="opcoes">
-                <Link to='/integracaoWeb'  onClick={() => escolherOpcao("Login Com Redes Sociais e Email")} >
+                <Link to='/integracaoWeb'  onClick={() => escolherOpcao("Login Com Redes Sociais e Email", valores.comRedesSociaisEmail)} >
                     <Opcao imagem={loginComRedesSociaisEmail} />
                       <p>Login Com Redes Sociais e Email</p>
                 </Link>
-                <Link to='/integracaoWeb'  onClick={() => escolherOpcao("Login com Email")}>
+                <Link to='/integracaoWeb'  onClick={() => escolherOpcao("Login com Email", valores.apenasEmail)}>
                     <Opcao imagem={loginComEmail} />
                     <p>Login com Email</p>
                 </Link>
-                <Link to='/integracaoWeb'  onClick={() => escolherOpcao("Sem Login")}>
+                <Link to='/integracaoWeb'  onClick={() => escolherOpcao("Sem Login", valores.semLogin)}>
                     <Opcao imagem={semLogin} />
                     <p>Sem Login</p>
                 </Link>
-                <Link to='/integracaoWeb'  onClick={() => escolherOpcao("Ainda não sei")}>
+                <Link to='/integracaoWeb'  onClick={() => escolherOpcao("Ainda não sei", valores.intWebSim)}>
                     <Opcao imagem={naoSei} />
                     <p>Ainda não sei</p>
                 </Link>

@@ -9,27 +9,33 @@ import {ChoicesContext} from '../context'
 
 function Idiomas() {
 
-    const [choices, setChoices] = useContext(ChoicesContext)
+    const { choicesOb, valoresOb, valorTotalOb } = useContext(ChoicesContext);
 
-    function escolherOpcao(selec){       
+    const [choices, setChoices] = choicesOb
+    const [valores, setValores] = valoresOb
+    const [valorTotal, setValorTotal] = valorTotalOb
+
+    
+    function escolherOpcao(selec, valor){       
         setChoices({
            ...choices,
-           idiomas: selec
-            })            
+            idiomas: selec
+            })  
+        setValorTotal(valorTotal+valor)     
+              
     }
-
     return (
         <div className="tela">
             <div className="opcoes">
-                <Link to='/estagioProjeto'  onClick={() => escolherOpcao("Uma língua")}>
+                <Link to='/estagioProjeto'  onClick={() => escolherOpcao("Uma língua", valores.umaLingua)}>
                     <Opcao imagem={umaLingua} />
                     <p>Uma única língua</p>
                 </Link>
-                <Link to='/estagioProjeto'  onClick={() => escolherOpcao("bilingue")}>
+                <Link to='/estagioProjeto'  onClick={() => escolherOpcao("bilingue", valores.bilingue)}>
                     <Opcao imagem={bilingue} />
                     <p>Bilíngue</p>
                 </Link>
-                <Link to='/estagioProjeto'  onClick={() => escolherOpcao("multilingue")}>
+                <Link to='/estagioProjeto'  onClick={() => escolherOpcao("multilingue", valores.multilingue)}>
                     <Opcao imagem={multilingue} />
                     <p>Multilíngue</p>
                 </Link>

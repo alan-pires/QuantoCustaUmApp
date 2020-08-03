@@ -7,29 +7,36 @@ import '../global.css'
 import { Link } from 'react-router-dom'
 import {ChoicesContext} from '../context'
 
-function TipoDeApp() {
+function TipoDeApp() {  
 
-    const [choices, setChoices] = useContext(ChoicesContext)
+    const { choicesOb, valoresOb, valorTotalOb } = useContext(ChoicesContext);
 
-    function escolherOpcao(selec){       
+    const [choices, setChoices] = choicesOb
+    const [valores, setValores] = valoresOb
+    const [valorTotal, setValorTotal] = valorTotalOb
+
+    
+    function escolherOpcao(selec, valor){       
         setChoices({
            ...choices,
-           tipoApp: selec
-            })            
+            tipoApp: selec
+            })  
+        setValorTotal(valorTotal+valor)     
+              
     }
 
     return (
         <div className="tela">
             <div className="opcoes">
-                <Link to='/design'  onClick={() => escolherOpcao("Aplicativo Android")} >
+                <Link to='/design'  onClick={() => escolherOpcao("Aplicativo Android", valores.aplicativoAndroid)} >
                     <Opcao imagem={AppAndroid} />
                       <p>Aplicativo Android</p>
                 </Link>
-                <Link to='/design'  onClick={() => escolherOpcao("Aplicativo Iphone")}>
+                <Link to='/design'  onClick={() => escolherOpcao("Aplicativo Iphone", valores.aplicativoIphone)}>
                     <Opcao imagem={AppIphone} />
                     <p>Aplicativo Iphone</p>
                 </Link>
-                <Link to='/design'  onClick={() => escolherOpcao("App Android e Iphone")}>
+                <Link to='/design'  onClick={() => escolherOpcao("App Android e Iphone", valores.aplicativoAndroidIphone)}>
                     <Opcao imagem={AppAndroidIphone} />
                     <p>App Android e Iphone</p>
                 </Link>

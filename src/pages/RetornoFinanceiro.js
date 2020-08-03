@@ -10,31 +10,37 @@ import {ChoicesContext} from '../context'
 
 function RetornoFinanceiro() {
 
-    const [choices, setChoices] = useContext(ChoicesContext)
+    const { choicesOb, valoresOb, valorTotalOb } = useContext(ChoicesContext);
 
-    function escolherOpcao(selec){       
+    const [choices, setChoices] = choicesOb
+    const [valores, setValores] = valoresOb
+    const [valorTotal, setValorTotal] = valorTotalOb
+
+
+    function escolherOpcao(selec, valor){       
         setChoices({
            ...choices,
-           tipoRetornoFinanc: selec
-            })            
+            tipoRetornoFinanc: selec
+            })  
+        setValorTotal(valorTotal+valor)     
+              
     }
-
     return (
         <div className="tela">
             <div className="opcoes">
-                <Link to='/sistemaLogin'  onClick={() => escolherOpcao("App Gratis Com Publicidade")} >
+                <Link to='/sistemaLogin'  onClick={() => escolherOpcao("App Gratis Com Publicidade", valores.appGratisComPublic)} >
                     <Opcao imagem={appGratisComPublicidade} />
                       <p>App Gratis Com Publicidade</p>
                 </Link>
-                <Link to='/sistemaLogin'  onClick={() => escolherOpcao("Aplicativo Pago")}>
+                <Link to='/sistemaLogin'  onClick={() => escolherOpcao("Aplicativo Pago", valores.aplicativoPago)}>
                     <Opcao imagem={appPago} />
                     <p>Aplicativo Pago</p>
                 </Link>
-                <Link to='/sistemaLogin'  onClick={() => escolherOpcao("Compras no App")}>
+                <Link to='/sistemaLogin'  onClick={() => escolherOpcao("Compras no App", valores.comprasDentroDoApp)}>
                     <Opcao imagem={comprasNoApp} />
                     <p>Compras no App</p>
                 </Link>
-                <Link to='/sistemaLogin'  onClick={() => escolherOpcao("Outros / não sei")}>
+                <Link to='/sistemaLogin'  onClick={() => escolherOpcao("Outros / não sei", valores.outrosNaoSei)}>
                     <Opcao imagem={outros} />
                     <p>Outros / não sei</p>
                 </Link>

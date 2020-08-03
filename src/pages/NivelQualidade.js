@@ -9,27 +9,34 @@ import {ChoicesContext} from '../context'
 
 
 function NivelQualidade() {
-    const [choices, setChoices] = useContext(ChoicesContext)
+    const { choicesOb, valoresOb, valorTotalOb } = useContext(ChoicesContext);
 
-    function escolherOpcao(selec){       
+    const [choices, setChoices] = choicesOb
+    const [valores, setValores] = valoresOb
+    const [valorTotal, setValorTotal] = valorTotalOb
+
+      
+    function escolherOpcao(selec, valor){       
         setChoices({
            ...choices,
             nivelQualidade: selec
-            })            
+            })  
+        setValorTotal(valorTotal+valor)     
+              
     }
 
     return (
         <div className="tela">
             <div className="opcoes" >
-                <Link to='/tipoDeApp' onClick={() => escolherOpcao("Ótima Qualidade")}>
+                <Link to='/tipoDeApp' onClick={() => escolherOpcao("Ótima Qualidade", valores.otimaQualidade)}>
                     <Opcao imagem={Opcao1}  />
                     <p>Ótima qualidade</p>
                 </Link>
-                <Link to='/tipoDeApp' onClick={() => escolherOpcao("Bom custo benefício")}>
+                <Link to='/tipoDeApp' onClick={() => escolherOpcao("Bom custo benefício", valores.bomCustoBen)}>
                     <Opcao imagem={Opcao2} />
                     <p>Bom custo benefício</p>
                 </Link>
-                <Link to='/tipoDeApp' onClick={() => escolherOpcao("Qualidade mínima")}>
+                <Link to='/tipoDeApp' onClick={() => escolherOpcao("Qualidade mínima", valores.qualidadeMinima)}>
                     <Opcao imagem={Opcao3} />
                     <p>Qualidade mínima</p>
                 </Link>

@@ -9,27 +9,34 @@ import {ChoicesContext} from '../context'
 
 function PerfilComUsuario() {
 
-    const [choices, setChoices] = useContext(ChoicesContext)
+    const { choicesOb, valoresOb, valorTotalOb } = useContext(ChoicesContext);
 
-    function escolherOpcao(selec){       
+    const [choices, setChoices] = choicesOb
+    const [valores, setValores] = valoresOb
+    const [valorTotal, setValorTotal] = valorTotalOb
+
+    
+    function escolherOpcao(selec, valor){       
         setChoices({
            ...choices,
-           perfilUsuario: selec
-            })            
+            perfilUsuario: selec
+            })  
+        setValorTotal(valorTotal+valor)     
+              
     }
 
     return (
         <div className="tela">
             <div className="opcoes">
-                <Link to='/painelAdm'  onClick={() => escolherOpcao("Sim")}>
+                <Link to='/painelAdm'  onClick={() => escolherOpcao("Sim", valores.perfilUsuarioSim)}>
                     <Opcao imagem={perfilUsuarioSim} />
                     <p>Sim</p>
                 </Link>
-                <Link to='/painelAdm'  onClick={() => escolherOpcao("Não")}>
+                <Link to='/painelAdm'  onClick={() => escolherOpcao("Não", valores.perfilUsuarioNao)}>
                     <Opcao imagem={perfilUsuarioNao} />
                     <p>Não</p>
                 </Link>
-                <Link to='/painelAdm'  onClick={() => escolherOpcao("Ainda não sei")}>
+                <Link to='/painelAdm'  onClick={() => escolherOpcao("Ainda não sei", valores.outrosNaoSei)}>
                     <Opcao imagem={perfilUsuarioNaoSei} />
                     <p>Ainda não sei</p>
                 </Link>
